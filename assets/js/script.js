@@ -1,11 +1,10 @@
 'use strict';
 
-let buttons = document.querySelectorAll('button');
-let input = document.querySelector('input');
+const buttons = document.querySelectorAll('.btn');
+const input = document.querySelector('#calc-input');
 let firstNumber = 0; // объявил переменную для того, чтобы запомнить первое число при любой операции
 let operation = "=";
 input.value = 0;
-// 1 + 1 +
 
 function updateFirstNumber(operation) {
     switch (operation) {
@@ -19,7 +18,13 @@ function updateFirstNumber(operation) {
             firstNumber = firstNumber * +input.value;
             break;
         case "/":
-            firstNumber = firstNumber / +input.value;
+            if(+input.value === 0){
+                input.value = "0";
+                firstNumber = 0;
+                alert("Ошибка! На ноль делить нельзя")
+            }else{
+                firstNumber = firstNumber / +input.value;
+            }
             break;
         case "=":
             firstNumber = +input.value;
@@ -70,7 +75,13 @@ function equally() {
             input.value = String(firstNumber * +input.value);
             break;
         case "/":
-            input.value = String(firstNumber / +input.value);
+            if(+input.value === 0){
+                input.value = "0";
+                firstNumber = 0;
+                alert("Ошибка! На ноль делить нельзя")
+            }else{
+                input.value = String(firstNumber / +input.value);
+            }
     }
     operation = "=";
 }
@@ -113,5 +124,3 @@ buttons[13].addEventListener('click', () => {
 buttons[14].addEventListener('click', equally);
 buttons[15].addEventListener('click', sum);
 
-
-// 7 8 9 / 4 5 6 * 3 2 1 - 0 c = +
