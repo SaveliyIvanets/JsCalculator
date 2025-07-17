@@ -6,6 +6,61 @@ let firstNumber = 0; // объявил переменную для того, ч�
 let operation = "=";
 input.value = 0;
 
+function eventCallBack(event) {
+    let dataAttributes = event.target.dataset;
+    if(dataAttributes.num === "0"){
+        addZero();
+    }
+    if(dataAttributes.num === "1"){
+        input.value !== "0" ? input.value += "1" : input.value = "1";
+    }
+    if(dataAttributes.num === "2"){
+        input.value !== "0" ? input.value += "2" : input.value = "2";
+    }
+    if(dataAttributes.num === "3"){
+        input.value !== "0" ? input.value += "3" : input.value = "3";
+    }
+    if(dataAttributes.num === "4"){
+        input.value !== "0" ? input.value += "4" : input.value = "4";
+    }
+    if(dataAttributes.num === "5"){
+        input.value !== "0" ? input.value += "5" : input.value = "5";
+    }
+    if(dataAttributes.num === "6"){
+        input.value !== "0" ? input.value += "6" : input.value = "6";
+    }
+    if(dataAttributes.num === "7"){
+        input.value !== "0" ? input.value += "7" : input.value = "7";
+    }
+    if(dataAttributes.num === "8"){
+        input.value !== "0" ? input.value += "8" : input.value = "8";
+    }
+    if(dataAttributes.num === "9"){
+        input.value !== "0" ? input.value += "9" : input.value = "9";
+    }
+    if(!!dataAttributes.clear){
+        input.value = "0";
+        firstNumber = 0;
+    }
+    if(dataAttributes.sign === "*"){
+        multiplication();
+    }
+    if(dataAttributes.sign === "+"){
+        sum();
+    }
+    if(dataAttributes.sign === "-"){
+        subtraction();
+    }
+    if(dataAttributes.sign === "/"){
+        division();
+    }
+    if(!!dataAttributes.equals){
+        equally();
+    }
+    if(dataAttributes.num === "1"){
+        input.value !== "0" ? input.value += "1" : input.value = "1"
+    }
+}
 function updateFirstNumber(operation) {
     switch (operation) {
         case "+":
@@ -18,11 +73,11 @@ function updateFirstNumber(operation) {
             firstNumber = firstNumber * +input.value;
             break;
         case "/":
-            if(+input.value === 0){
+            if (+input.value === 0) {
                 input.value = "0";
                 firstNumber = 0;
                 alert("Ошибка! На ноль делить нельзя")
-            }else{
+            } else {
                 firstNumber = firstNumber / +input.value;
             }
             break;
@@ -75,52 +130,16 @@ function equally() {
             input.value = String(firstNumber * +input.value);
             break;
         case "/":
-            if(+input.value === 0){
+            if (+input.value === 0) {
                 input.value = "0";
                 firstNumber = 0;
                 alert("Ошибка! На ноль делить нельзя")
-            }else{
+            } else {
                 input.value = String(firstNumber / +input.value);
             }
     }
     operation = "=";
 }
-
-buttons[0].addEventListener('click', () => {
-    input.value !== "0" ? input.value += "7" : input.value = "7"
-});
-buttons[1].addEventListener('click', () => {
-    input.value !== "0" ? input.value += "8" : input.value = "8"
-});
-buttons[2].addEventListener('click', () => {
-    input.value !== "0" ? input.value += "9" : input.value = "9"
-});
-buttons[3].addEventListener('click', division);
-buttons[4].addEventListener('click', () => {
-    input.value !== "0" ? input.value += "4" : input.value = "4"
-});
-buttons[5].addEventListener('click', () => {
-    input.value !== "0" ? input.value += "5" : input.value = "5"
-});
-buttons[6].addEventListener('click', () => {
-    input.value !== "0" ? input.value += "6" : input.value = "6"
-});
-buttons[7].addEventListener('click', multiplication);
-buttons[8].addEventListener('click', () => {
-    input.value !== "0" ? input.value += "3" : input.value = "3"
-});
-buttons[9].addEventListener('click', () => {
-    input.value !== "0" ? input.value += "2" : input.value = "2"
-});
-buttons[10].addEventListener('click', () => {
-    input.value !== "0" ? input.value += "1" : input.value = "1"
-});
-buttons[11].addEventListener('click', subtraction);
-buttons[12].addEventListener('click', addZero);
-buttons[13].addEventListener('click', () => {
-    input.value = "0";
-    firstNumber = 0;
-});
-buttons[14].addEventListener('click', equally);
-buttons[15].addEventListener('click', sum);
-
+for(let button of buttons){
+    button.addEventListener("click", (event) => {eventCallBack(event)});
+}
