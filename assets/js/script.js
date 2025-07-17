@@ -57,9 +57,6 @@ function eventCallBack(event) {
     if(!!dataAttributes.equals){
         equally();
     }
-    if(dataAttributes.num === "1"){
-        input.value !== "0" ? input.value += "1" : input.value = "1"
-    }
 }
 function updateFirstNumber(operation) {
     switch (operation) {
